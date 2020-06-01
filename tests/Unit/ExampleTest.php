@@ -13,6 +13,7 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
+        $reply = factory('App\Reply')->create();
         $this->assertTrue(true);
     }
 }
