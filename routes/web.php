@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('/threads', 'ThreadsController@index');
 Route::get('/threads/{thread}', 'ThreadsController@show');
 Route::post('/threads/{thread}/replies', 'RepliesController@store');
+Route::post('/threads', 'ThreadsController@store');
 
 Auth::routes();
 
