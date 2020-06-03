@@ -15,7 +15,7 @@ class CreateThreadTest extends TestCase
     {
         $this->expectException('Illuminate\Auth\AuthenticationException');
 
-        $thread = factory('App\Thread')->create();
+        $thread = create('App\Thread');
 
         $this->post('/threads', $thread->toArray());
     }
@@ -24,9 +24,9 @@ class CreateThreadTest extends TestCase
     function an_authenticated_user_can_create_new_forum_threads()
     {
         // We have a signed in user
-        $this->be(factory('App\User')->create());
+        $this->be(create('App\User'));
         // When we hit the endpoint to create a new thread
-        $thread = factory('App\Thread')->make();
+        $thread = make('App\Thread');
         $this->post('/threads', $thread->toArray());
         // When we visit the page
         $this->get($thread->path())
