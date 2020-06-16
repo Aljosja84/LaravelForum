@@ -8,6 +8,14 @@ class Thread extends Model
 {
     protected $guarded = [];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('replyCount', function($builder) {
+            $builder->withCount('replies');
+        });
+    }
     /**
      * @return string
      */
@@ -45,5 +53,9 @@ class Thread extends Model
         return $this->belongsTo('App\Channel');
     }
 
+    public function scopeFilter($query, $filters)
+    {
+        return $filters->apply($query);
+    }
 
 }
