@@ -72,10 +72,11 @@ class ThreadsController extends Controller
      *
      * @param Channel $channel
      * @param Thread $thread
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Channel $channel, Thread $thread)
     {
+        /** @var TYPE_NAME $thread */
         return view('threads.show', [
             'thread' => $thread,
             'replies' => $thread->replies()->paginate(10)
