@@ -24,4 +24,5 @@
             </div>
         </div>
     </div>
+    <div class="col-md-12">This is the footer</div>
 @endsection
