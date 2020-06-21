@@ -11,7 +11,7 @@ class ThreadsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only('store', 'create');
+        $this->middleware('auth')->only('store', 'create', 'destroy');
     }
 
     /**
@@ -109,12 +109,20 @@ class ThreadsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $channel
+     * @param Thread $thread
+     * @return void
      */
-    public function destroy($id)
+    public function destroy($channel, Thread $thread)
     {
-        //
+        $thread->replies()->delete();
+        $thread->delete();
+
+        if(request()->wantsJson()) {
+            return response([], 204);
+        }
+
+        return redirect('/threads');
     }
 
     /**
