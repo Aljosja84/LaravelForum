@@ -18,6 +18,15 @@ class Thread extends Model
             $builder->withCount('replies');
         });
 
+        static::created(function($thread) {
+            Activity::create([
+                'user_id' => auth()->id(),
+                'type' => 'created_thread',
+                'subject_id' => $thread->id,
+                'subject_type' => 'App\Thread'
+            ]);
+        });
+
     }
     /**
      * @return string
