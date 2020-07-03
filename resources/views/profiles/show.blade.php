@@ -14,23 +14,25 @@
     </div>
 
 
-    @foreach($threads as $thread)
+    @foreach($activities as $activity)
         <div class="card">
             <div class="card-header">
                 <div class="level">
                     <span class="flex">
-                        <a href="{{route('profile', $thread->creator}}">{{ $thread->creator->name }}</a> posted:
-                        <a href="{{ $thread->path() }}">{{ $thread->title }}</a>
+                       <!-- <a href="{{route('profile', $thread->creator}}">{{ $thread->creator->name }}</a> posted:
+                        <a href="{{ $thread->path() }}">{{ $thread->title }}</a> -->
                     </span>
 
-                    <span>{{ $thread->created_at->diffForHumans() }}</span>
+                    <span>
+                       <!-- {{ $thread->created_at->diffForHumans() }} -->
+                    </span>
                 </div>
             </div>
             <div class="card-body">
-                {{ $thread->body }}
+               <!-- {{ $thread->body }} -->
             </div>
         </div>
     @endforeach
-    {{ $threads->links() }}
+    <!-- {{ $threads->links() }} -->
 </div>
 @endsection
