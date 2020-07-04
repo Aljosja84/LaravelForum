@@ -2,12 +2,12 @@
     <div class="card-header">
         <div class="level">
             <span class="flex">
-                {{ $profileUser->name }} published <a href="{{ $activity->subject->path() }}">{{ $activity->subject->title }}</a>
+                {{ $profileUser->name }} replied to "<a href="{{ $activity->subject->thread->path() }}">{{ $activity->subject->thread->title }}</a>"
             </span>
         </div>
     </div>
 
     <div class="card-body">
-        {{ $activity->subject->body }}
+         {{ $activity->subject->body }}
     </div>
 </div>
