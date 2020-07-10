@@ -31,6 +31,8 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <flash message="Tijdelijke flash message"></flash>
     </div>
 </body>
 </html>
