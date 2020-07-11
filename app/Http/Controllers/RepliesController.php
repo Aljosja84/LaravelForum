@@ -51,7 +51,7 @@ class RepliesController extends Controller
             'user_id' => auth()->id()
         ]);
 
-        return redirect($thread->path());
+        return back()->with('flash', 'Your comments has been posted. Thank-you! :)');
     }
 
     /**
