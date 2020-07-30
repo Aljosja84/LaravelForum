@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Channel;
+use App\Reply;
 use App\Thread;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,7 @@ class RepliesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->only('store', 'create', 'destroy');
     }
 
     /**
@@ -94,8 +95,13 @@ class RepliesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Reply $reply)
     {
-        //
+
+        $this->authorize('destroy', $reply);
+
+        $reply->delete();
+
+        return back();
     }
 }

@@ -9,6 +9,7 @@ use Tests\TestCase;
 class ParticipateInForumTest extends TestCase
 {
     use RefreshDatabase;
+
     /** @test */
     public function unauthenticated_user_may_not_participate_in_forum_threads()
     {
@@ -48,6 +49,31 @@ class ParticipateInForumTest extends TestCase
         $this->post($thread->path() . '/replies', $reply->toArray())
             ->assertSessionHasErrors('body');
 
+    }
+
+    /** @test */
+    function unauthorized_users_cannot_delete_replies()
+    {
+
+        $reply = create('App\Reply');
+
+        $this->delete("/replies/{$reply->id}")
+            ->assertRedirect('login');
+
+        $this->signIn()
+            ->delete("/replies/{$reply->id}")
+            ->assertStatus(403);
+    }
+
+    /** @test */
+    function authorized_users_can_delete_replies()
+    {
+        $this->signIn();
+        $reply = create('App\Reply', ['user_id' => auth()->id()]);
+
+        $this->json('DELETE', 'replies/{$reply->id}');
+
+        $this->assertDatabaseHas('replies', ['id' => "{$reply->id}"]);
     }
 
 }

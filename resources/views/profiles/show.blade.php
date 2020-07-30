@@ -19,7 +19,6 @@
 
         @foreach($activity as $record)
             @if (view()->exists("profiles.activities.{$record->type}"))
-                // for safety sake
                 @include("profiles.activities.{$record->type}", ['activity' => $record])
             @endif
             <br>
