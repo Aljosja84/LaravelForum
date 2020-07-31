@@ -11,7 +11,7 @@ class ThreadsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only('store', 'create', 'destroy');
+        $this->middleware('auth')->only('store', 'create', 'destroy', 'update');
     }
 
     /**

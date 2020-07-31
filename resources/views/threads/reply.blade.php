@@ -22,7 +22,8 @@
     </div>
 
     @can('destroy', $reply)
-        <div class="panel-footer">
+        <div class="panel-footer level">
+            <button class="btn btn-xs">Edit</button>
             <form method="POST" action="/replies/{{ $reply->id }}">
                 @csrf
                 @method('DELETE')

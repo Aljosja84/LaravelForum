@@ -11,7 +11,7 @@
                                 <a href="/profiles/{{ $thread->creator->name }}">{{ $thread->creator->name }}</a> posted:
                                 {{ $thread->title }}
                             </span>
-                            @can('update', $thread)
+                            @can('destroy', $thread)
                                 <form action="{{ $thread->path() }}" method="POST">
                                     @csrf
                                     @method('DELETE')
