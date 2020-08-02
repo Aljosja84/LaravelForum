@@ -23,13 +23,15 @@
 
     @can('destroy', $reply)
         <div class="panel-footer level">
-            <button class="btn btn-xs">Edit</button>
-            <form method="POST" action="/replies/{{ $reply->id }}">
-                @csrf
-                @method('DELETE')
+            <div class="card-header">
+                <button class="btn btn-xs mr-1">Edit</button>
+                <form method="POST" action="/replies/{{ $reply->id }}">
+                    @csrf
+                    @method('DELETE')
 
-                <button type="submit" class="btn btn-danger btn-xs">Delete</button>
-            </form>
+                    <button type="submit" class="btn btn-danger btn-xs">Delete</button>
+                </form>
+            </div>
         </div>
     @endcan
 </div>
