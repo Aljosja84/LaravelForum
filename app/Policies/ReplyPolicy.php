@@ -14,4 +14,9 @@ class ReplyPolicy
     {
         return $reply->user_id == $user->id;
     }
+
+    public function update(User $user, Reply $reply)
+    {
+        return $reply->user_id == $user->id;
+    }
 }
