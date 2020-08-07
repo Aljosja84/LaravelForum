@@ -35,12 +35,8 @@
             <div class="panel-footer">
                 <div class="card-header level">
                     <button class="btn btn-xs mr-1" @click="editing = true">Edit</button>
-                    <form method="POST" action="/replies/{{ $reply->id }}">
-                        @csrf
-                        @method('DELETE')
+                    <button class="btn btn-danger btn-xs" @click="destroy">Delete</button>
 
-                        <button type="submit" class="btn btn-danger btn-xs">Delete</button>
-                    </form>
                 </div>
             </div>
         @endcan
