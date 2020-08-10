@@ -12,6 +12,10 @@ class Reply extends Model
 
     protected $with = ['owner', 'favorites'];
 
+    // the $appends var gets sent with a Json request
+    // in this case our Vue favorites component
+    protected $appends = ['favoritesCount'];
+
     public static function boot()
     {
         parent::boot();
@@ -20,6 +24,10 @@ class Reply extends Model
             $reply->favorites->each->delete();
         });
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function owner()
     {
         return $this->belongsTo('App\User', 'user_id');

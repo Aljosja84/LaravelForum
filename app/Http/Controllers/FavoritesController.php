@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Favorite;
+use  App\Favorite;
 use App\Reply;
 use Illuminate\Http\Request;
 
@@ -83,11 +83,11 @@ class FavoritesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Reply $reply
+     * @return void
      */
-    public function destroy($id)
+    public function destroy(Reply $reply)
     {
-        //
+        $reply->unfavorite();
     }
 }
