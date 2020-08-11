@@ -55,5 +55,6 @@ class FavoritesTest extends TestCase
         $this->post('replies/' . $reply->id . '/favorites');
 
         $this->assertCount(1, $reply->favorites);
+
     }
 }
