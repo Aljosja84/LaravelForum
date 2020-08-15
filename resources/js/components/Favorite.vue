@@ -1,7 +1,7 @@
 <template>
-    <button type="submit" class="classes" @click="toggle">
-        <span class="glyphicon glyphicon-heart"></span>
-        <span v-text="favoritesCount"></span>
+    <button type="submit" class="btn btn-outline-primary d-flex">
+        <i class="material-icons mr-2 text-primary">favorite</i>
+        <span v-text="favouritesCount"></span>
     </button>
 </template>
 
@@ -12,26 +12,36 @@
         data() {
             return {
                 favoritesCount: this.reply.favoritesCount,
-                isFavorited: false
+                isFavorited: this.reply.isFavorited
             }
         },
 
         computed: {
           classes() {
               return ['btn', this.isFavorited ? 'btn-primary' : 'btn-default'];
-          }
+          },
+            endpoint() {
+              return '/replies/' + this.reply.id + '/favorites';
+            }
         },
 
         methods: {
             toggle() {
-                if(this.isFavorited) {
-                    axios.delete('/replies' + this.reply.id + '/favorites');
-                }   else {
-                    axios.post('/replies' + this.reply.id + '/favorites');
+                this.isFavorited ? this.destroy() : this.create();
+            },
 
-                    this.isFavorited = true;
-                    this.favoritesCount++;
-                }
+            destroy() {
+                axios.delete(this.endpoint);
+
+                this.isFavorited = false;
+                this.favoritesCount--;
+            },
+
+            create() {
+                axios.post(this.endpoint);
+
+                this.isFavorited = true;
+                this.favoritesCount++;
             }
         }
     }

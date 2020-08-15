@@ -1,5 +1,8 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+$material-icons-font-path: '~material-icons/iconfont/';
+
+@import '~node_modules/material-icons/iconfont/material-icons.scss';
 
 // Variables
 @import 'variables';

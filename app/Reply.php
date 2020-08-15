@@ -14,7 +14,7 @@ class Reply extends Model
 
     // the $appends var gets sent with a Json request
     // in this case our Vue favorites component
-    protected $appends = ['favoritesCount'];
+    protected $appends = ['favoritesCount', 'isFavorited'];
 
     public static function boot()
     {

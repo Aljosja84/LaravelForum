@@ -30,10 +30,6 @@
                 $(this.$el).fadeOut(400, () => {
                     flash('Your reply has been deleted');
                 });
-
-                $(this.$el).fadeOut(400, () => {
-                    flash('Your reply has been deleted');
-                });
             }
         }
     }
