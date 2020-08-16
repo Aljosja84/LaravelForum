@@ -7,14 +7,12 @@
                         {{ $reply->owner->name }}
                     </a> said {{ $reply->created_at->diffForHumans() }}
                 </h6>
-
-                <div>
-                    <favorite :reply="{{ $reply }}"></favorite>
-                    <form method="POST" action="/replies/{{ $reply->id }}/favorites">
-                        @csrf
-
-                    </form>
-                </div>
+                
+                @if (Auth::check())
+                    <div>
+                        <favorite :reply="{{ $reply }}"></favorite>
+                    </div>
+                @endif
             </div>
         </div>
         <div class="card-body">
@@ -40,5 +38,4 @@
             </div>
         @endcan
     </div>
-    <br/>
 </reply>

@@ -1925,7 +1925,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     classes: function classes() {
-      return ['btn', this.isFavorited ? 'btn-primary' : 'btn-default'];
+      return this.isFavorited ? 'btn btn-primary' : 'btn btn-danger';
     },
     endpoint: function endpoint() {
       return '/replies/' + this.reply.id + '/favorites';
@@ -2033,7 +2033,7 @@ __webpack_require__.r(__webpack_exports__);
       flash('Reply has been updated!');
     },
     destroy: function destroy() {
-      axios["delete"]('/replies' + this.attributes.id);
+      axios["delete"]('/replies/' + this.attributes.id);
       $(this.$el).fadeOut(400, function () {
         flash('Your reply has been deleted');
       });
@@ -38283,15 +38283,14 @@ var render = function() {
   return _c(
     "button",
     {
-      staticClass: "btn btn-outline-primary d-flex",
-      attrs: { type: "submit" }
+      class: _vm.classes,
+      attrs: { type: "submit" },
+      on: { click: _vm.toggle }
     },
     [
-      _c("i", { staticClass: "material-icons mr-2 text-primary" }, [
-        _vm._v("favorite")
-      ]),
+      _c("span", [_vm._v("favorite")]),
       _vm._v(" "),
-      _c("span", { domProps: { textContent: _vm._s(_vm.favouritesCount) } })
+      _c("span", { domProps: { textContent: _vm._s(_vm.favoritesCount) } })
     ]
   )
 }
@@ -50802,7 +50801,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: Can't find stylesheet to import.\n  ╷\n5 │ @import '~node_modules/material-icons/iconfont/material-icons.scss';\n  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  ╵\n  C:\\xampp\\htdocs\\LaravelForum\\resources\\sass\\app.scss 5:9  root stylesheet\n    at C:\\xampp\\htdocs\\LaravelForum\\node_modules\\webpack\\lib\\NormalModule.js:316:20\n    at C:\\xampp\\htdocs\\LaravelForum\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\xampp\\htdocs\\LaravelForum\\node_modules\\loader-runner\\lib\\LoaderRunner.js:233:18\n    at context.callback (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass-loader\\dist\\index.js:73:7\n    at Function.call$2 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:87584:16)\n    at _render_closure1.call$2 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:77359:12)\n    at _RootZone.runBinary$3$3 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:25587:18)\n    at _RootZone.runBinary$3 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:25591:19)\n    at _FutureListener.handleError$1 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:24041:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:24337:40)\n    at Object._Future__propagateToListeners (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:3497:88)\n    at _Future._completeError$2 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:24165:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:23557:12)\n    at Object._asyncRethrow (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:3253:17)\n    at C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:13333:20\n    at _wrapJsFunctionForAsync_closure.$protected (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:3276:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:23578:12)\n    at _awaitOnObject_closure0.call$2 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:23570:25)\n    at _RootZone.runBinary$3$3 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:25587:18)\n    at _RootZone.runBinary$3 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:25591:19)\n    at _FutureListener.handleError$1 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:24041:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:24337:40)\n    at Object._Future__propagateToListeners (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:3497:88)\n    at _Future._completeError$2 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:24165:9)\n    at _AsyncAwaitCompleter.completeError$2 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:23557:12)\n    at Object._asyncRethrow (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:3253:17)\n    at C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:15991:20\n    at _wrapJsFunctionForAsync_closure.$protected (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:3276:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:23578:12)\n    at _awaitOnObject_closure0.call$2 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:23570:25)\n    at _RootZone.runBinary$3$3 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:25587:18)\n    at _RootZone.runBinary$3 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:25591:19)\n    at _FutureListener.handleError$1 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:24041:19)\n    at _Future__propagateToListeners_handleError.call$0 (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:24337:40)\n    at Object._Future__propagateToListeners (C:\\xampp\\htdocs\\LaravelForum\\node_modules\\sass\\sass.dart.js:3497:88)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 

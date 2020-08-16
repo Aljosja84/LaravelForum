@@ -1,7 +1,7 @@
 <template>
-    <button type="submit" class="btn btn-outline-primary d-flex">
-        <i class="material-icons mr-2 text-primary">favorite</i>
-        <span v-text="favouritesCount"></span>
+    <button type="submit" :class="classes" @click="toggle">
+        <span>favorite</span>
+        <span v-text="favoritesCount"></span>
     </button>
 </template>
 
@@ -17,11 +17,11 @@
         },
 
         computed: {
-          classes() {
-              return ['btn', this.isFavorited ? 'btn-primary' : 'btn-default'];
-          },
+            classes() {
+                return this.isFavorited ? 'btn btn-primary' : 'btn btn-danger';
+            },
             endpoint() {
-              return '/replies/' + this.reply.id + '/favorites';
+                return '/replies/' + this.reply.id + '/favorites';
             }
         },
 
