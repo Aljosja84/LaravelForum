@@ -28,6 +28,8 @@
                 </div>
                 <div>&nbsp;</div>
 
+                <replies :data="{{ $thread->replies }}"></replies>
+
                 @foreach($replies as $reply)
                     @include('threads.reply')
                 @endforeach
