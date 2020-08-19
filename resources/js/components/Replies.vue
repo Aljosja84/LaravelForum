@@ -12,6 +12,8 @@
     export default {
         props: ['data'],
 
+        components: { Reply },
+
         data() {
             return {
                 items: this.data
