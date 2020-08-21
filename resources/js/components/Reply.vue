@@ -1,10 +1,10 @@
 <template>
-        <div id="reply-{{ $reply->id }}" class="card">
+        <div :id="'reply-'+id" class="card">
             <div class="card-header">
                 <div class="level">
                     <h6 class="flex">
-                        <a href="/profiles/{{ $reply->owner->name }}">
-                            {{ $reply->owner->name }}
+                        <a :href="'/profiles/'+data.owner.name">
+                           v-text="data.owner.name"
                         </a> said {{ $reply->created_at->diffForHumans() }}
                     </h6>
 
@@ -50,6 +50,7 @@
         data() {
             return {
                 editing: false,
+                id: this.data.id,
                 body: this.data.body
             };
         },
