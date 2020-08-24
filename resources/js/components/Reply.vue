@@ -5,14 +5,15 @@
                     <h6 class="flex">
                         <a :href="'/profiles/'+data.owner.name">
                            v-text="data.owner.name"
-                        </a> said {{ $reply->created_at->diffForHumans() }}
+                        </a> said {{ data.created_at }}...
                     </h6>
 
-                    @if (Auth::check())
+                   <!-- @if (Auth::check())
                     <div>
                         <favorite :reply="{{ $reply }}"></favorite>
                     </div>
                     @endif
+                    -->
                 </div>
             </div>
             <div class="card-body">
@@ -28,7 +29,7 @@
                 <div v-else v-text="body"></div>
             </div>
 
-            @can('destroy', $reply)
+           <!-- @can('destroy', $reply)
             <div class="panel-footer">
                 <div class="card-header level">
                     <button class="btn btn-xs mr-1" @click="editing = true">Edit</button>
@@ -37,6 +38,7 @@
                 </div>
             </div>
             @endcan
+            -->
         </div>
 </template>
 <script>
@@ -69,9 +71,10 @@
             destroy() {
                 axios.delete('/replies/' + this.data.id);
 
-                $(this.$el).fadeOut(400, () => {
-                    flash('Your reply has been deleted');
-                });
+                this.$emit('deleted', this.data.id);
+                //$(this.$el).fadeOut(400, () => {
+                //    flash('Your reply has been deleted');
+                //});
             }
         }
     }
