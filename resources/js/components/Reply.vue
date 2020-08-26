@@ -3,17 +3,15 @@
             <div class="card-header">
                 <div class="level">
                     <h6 class="flex">
-                        <a :href="'/profiles/'+data.owner.name">
-                           v-text="data.owner.name"
+                        <a :href="'/profiles/'+data.owner.name"
+                           v-text="data.owner.name">
                         </a> said {{ data.created_at }}...
                     </h6>
 
-                   <!-- @if (Auth::check())
                     <div>
-                        <favorite :reply="{{ $reply }}"></favorite>
+                        <favorite :reply="data"></favorite>
                     </div>
-                    @endif
-                    -->
+
                 </div>
             </div>
             <div class="card-body">
@@ -72,9 +70,6 @@
                 axios.delete('/replies/' + this.data.id);
 
                 this.$emit('deleted', this.data.id);
-                //$(this.$el).fadeOut(400, () => {
-                //    flash('Your reply has been deleted');
-                //});
             }
         }
     }
