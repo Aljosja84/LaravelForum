@@ -62,5 +62,11 @@ class ThreadTest extends TestCase
 
         // log in
         $this->signIn();
+
+        // subscribe to the thread
+        $thread->subscribe();
+
+        // fetch all threads the user has subscribed to
+        $thread->subscriptions()->where('user_id', auth()->id())->get();
     }
 }
