@@ -67,6 +67,22 @@ class ThreadTest extends TestCase
         $thread->subscribe();
 
         // fetch all threads the user has subscribed to
-        $thread->subscriptions()->where('user_id', auth()->id())->get();
+        $this->assertEquals(1, $thread->subscriptions()->where('user_id', auth()->id())->count());
+    }
+
+    /** @test */
+    function a_thread_can_be_unsubscribed_from()
+    {
+        // we have a thread
+        $thread = create('App\Thread');
+
+        // and a user who is subscribed to the thread
+        $thread->subscribe($userId = 1);
+
+        // this user will now unsubscribe
+        $thread->unsubscribe($userId);
+
+        // will yield no results when called upon
+        $this->assertCount(0, $thread->subscriptions);
     }
 }
