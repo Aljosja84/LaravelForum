@@ -59,7 +59,14 @@ class Thread extends Model
      */
     public function addReply($reply)
     {
-        $this->replies()->create($reply);
+        $reply = $this->replies()->create($reply);
+
+        // Prepare a notification for all subscribers
+        foreach($this->subscriptions() as $subscription) {
+            $subscription->user->notify(new ThreadWasUpdated);
+        }
+
+        return $reply;
     }
 
     /**
