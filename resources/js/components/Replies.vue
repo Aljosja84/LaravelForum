@@ -12,7 +12,7 @@
     export default {
         props: ['data'],
 
-        components: { Reply },
+        components: {Reply},
 
         data() {
             return {

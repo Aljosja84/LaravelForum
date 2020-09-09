@@ -45,7 +45,7 @@
     export default {
         props: ['data'],
 
-        components: { Favorite },
+        components: {Favorite},
 
         data() {
             return {
