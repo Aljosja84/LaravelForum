@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div v-for="(reply, index) in items">
+    <div style="padding-bottom: 50px">
+        <div v-for="(reply, index) in items" style="padding-bottom:10px">
             <reply :data="reply" @deleted="remove(index)"></reply>
         </div>
     </div>

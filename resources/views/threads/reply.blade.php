@@ -1,7 +1,7 @@
 <reply :attributes="{{ $reply }}" inline-template v-cloak>
     <div id="reply-{{ $reply->id }}" class="card">
         <div class="card-header">
-            <div class="level">
+            <div class="level" style="background-color: #1b4b72">
                 <h6 class="flex">
                     <a href="/profiles/{{ $reply->owner->name }}">
                         {{ $reply->owner->name }}
@@ -21,8 +21,8 @@
                     <textarea class="form-control" v-model="body"></textarea>
                 </div>
 
-                <button class="btn btn-xs btn-primary" @click="update">Update</button>
-                <button class="btn btn-xs btn-link" @click="editing = false">Cancel</button>
+                <button class="btn btn-xs btn-outline-dangerr" @click="update">Update</button>
+                <button class="btn btn-xs btn-outline-primary" @click="editing = false">Cancel</button>
             </div>
 
             <div v-else v-text="body"></div>

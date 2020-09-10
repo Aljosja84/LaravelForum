@@ -38490,9 +38490,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticStyle: { "padding-bottom": "50px" } },
     _vm._l(_vm.items, function(reply, index) {
       return _c(
         "div",
+        { staticStyle: { "padding-bottom": "10px" } },
         [
           _c("reply", {
             attrs: { data: reply },

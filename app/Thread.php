@@ -97,6 +97,9 @@ class Thread extends Model
         ]);
     }
 
+    /**
+     * @param null $userId
+     */
     public function unsubscribe($userId = null)
     {
         $this->subscriptions()
