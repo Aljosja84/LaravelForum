@@ -28,7 +28,7 @@ class NotificationsTest extends TestCase
             'body' => 'foobar'
         ]);
 
-        // We should see 0 notification, because we left it ourselves
+        // We should see 0 notifications, because we left it ourselves
         $this->assertCount(0, auth()->user()->fresh()->notifications);
 
         // Now, someone else leaves a reply
@@ -39,5 +39,30 @@ class NotificationsTest extends TestCase
 
         // We should see 1 notification
         $this->assertCount(1, auth()->user()->fresh()->notifications);
+    }
+
+    /** @test */
+    function a_user_can_clear_a_notification()
+    {
+        // Given we are signed in
+        $this->signIn();
+
+        // Given we have a thread that we also subscribe to
+        $thread = create('App\Thread')->subscribe();
+
+        // We leave a reply on the thread, written by another user
+        $thread->addReply([
+            'user_id' => create('App\User')->id,
+            'body' => 'foobar'
+        ]);
+
+        // We should see one unread notification
+        $this->assertCount(1, auth()->user()->unreadNotifications);
+
+        // If we 'read' the notification
+        $this->delete($endpoint);
+
+        // We should see 0 unread notifications
+        $this->assertCount(0, auth()->user()->fresh()->unreadNotifications);
     }
 }
