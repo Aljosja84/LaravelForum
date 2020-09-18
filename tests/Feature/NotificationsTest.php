@@ -59,8 +59,11 @@ class NotificationsTest extends TestCase
         // We should see one unread notification
         $this->assertCount(1, auth()->user()->unreadNotifications);
 
+        // Fetch the notification id
+        $notificationId = auth()->user()->unreadNotifications->first()->id;
+
         // If we 'read' the notification
-        $this->delete($endpoint);
+        $this->delete("/profiles/{auth()->user()->name}/notifications/{notificationId}");
 
         // We should see 0 unread notifications
         $this->assertCount(0, auth()->user()->fresh()->unreadNotifications);
