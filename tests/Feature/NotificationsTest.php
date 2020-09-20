@@ -42,6 +42,28 @@ class NotificationsTest extends TestCase
     }
 
     /** @test */
+    function a_user_can_fetch_their_unread_notifications()
+    {
+        // Given we are signed in
+        $this->signIn();
+
+        // Given we have a thread that we also subscribe to
+        $thread = create('App\Thread')->subscribe();
+
+        // We leave a reply on the thread, written by another user
+        $thread->addReply([
+            'user_id' => create('App\User')->id,
+            'body' => 'foobar'
+        ]);
+
+        $user = auth()->user();
+
+        $response = $this->getJson("/profiles/{$user->name}/notifications")->json();
+
+        $this->assertCount(1, $response);
+    }
+
+    /** @test */
     function a_user_can_clear_a_notification()
     {
         // Given we are signed in
@@ -63,7 +85,7 @@ class NotificationsTest extends TestCase
         $notificationId = auth()->user()->unreadNotifications->first()->id;
 
         // If we 'read' the notification
-        $this->delete("/profiles/{auth()->user()->name}/notifications/{notificationId}");
+        $this->delete("/profiles/" . auth()->user()->name . "/notifications/{$notificationId}");
 
         // We should see 0 unread notifications
         $this->assertCount(0, auth()->user()->fresh()->unreadNotifications);
