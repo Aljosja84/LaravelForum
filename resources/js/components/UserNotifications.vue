@@ -1,12 +1,12 @@
 <template>
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Notifications
+    <li class="nav-item dropdown" v-if="notifications.length">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+            <span class="fa fa-bell"></span>
         </a>
 
         <ul class="dropdown-menu">
             <li v-for="notification in notifications">
-                <a href="#">Blue</a>
+                <a class="nav-link" :href="notification.data.link" v-text="notification.data.message" @click.prevent="markAsRead(notification)"></a>
             </li>
         </ul>
     </li>
@@ -14,11 +14,24 @@
 
 <script>
     export default {
-        name: "UserNotifications",
-
         data() {
             return {
-                notifications: false
+                notifications: false,
+            }
+        },
+
+        props: ['link'],
+
+        created() {
+            axios.get('/profiles/' + this.link + '/notifications')
+                .then(response => this.notifications = response.data);
+
+            this.link = 'Frank';
+        },
+
+        methods: {
+            markAsRead(notification) {
+                axios.delete('/profiles/' + this.link + '/notifications/' + notification.id)
             }
         }
     }
